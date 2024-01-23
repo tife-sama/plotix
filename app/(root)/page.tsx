@@ -8,26 +8,26 @@ const perks = [
     name: "Find a Coach",
     Icon:UserSearch ,
     description:
-      "Get your assets delivered to your email in seconds and download them right away.",
+      "Discover Your Writing Mentor.",
   },
   {
     name: "Go Live",
     Icon: Webcam,
     description:
-      "Get your assets delivered to your email in seconds and download them right away.",
+      "Elevate Your Writing Skills through Live 1:1 and Group Sessions.",
   },
   {
     name: "Be Better",
     Icon: PartyPopper,
     description:
-      "Get your assets delivered to your email in seconds and download them right away.",
+      "Transform Your Writing Abilities and Industry Knowledge.",
   },
-  {
-    name: "Feel the Magic",
-    Icon: Wand2,
-    description:
-      "Get your assets delivered to your email in seconds and download them right away.",
-  },
+  // {
+  //   name: "Feel the Magic",
+  //   Icon: Wand2,
+  //   description:
+  //     "Experience the Enchantment of Mastering the Art of Writing.",
+  // },
 ]
 
 export default function Home() {
@@ -52,8 +52,8 @@ export default function Home() {
           </div>
         </section>
       {/* How it works*/}
-        <section className="py-5 mx-auto  border-t border-gray-200 bg-gray-50 ">
-          <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
+        <section className="py-5 mx-auto  border-t border-gray-200 bg-gray-50">
+          <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-3 md:gap-x-0 ">
             {perks.map((perk) => (
               <div
                 key={perk.name}
@@ -65,11 +65,11 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6">
+                <div className="mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6 ">
                   <h3 className="text-base font-medium text-gray-900">
                     {perk.name}
                   </h3>
-                  <p className="mt-3 text-sm font-muted-foreground">
+                  <p className="mt-3 text-sm font-light font-muted-foreground">
                     {perk.description}
                   </p>
                 </div>

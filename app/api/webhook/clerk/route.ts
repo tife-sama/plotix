@@ -4,6 +4,7 @@ import { WebhookEvent } from '@clerk/nextjs/server'
 import { createUser, deleteUser, updateUser } from '@/lib/actions/user.actions'
 import { clerkClient } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
+import { UpdateUserParams } from '@/types'
  
 export async function POST(req: Request) {
  
@@ -88,22 +89,27 @@ export async function POST(req: Request) {
 if (eventType === 'user.updated') {
   const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
-  const user = {
-    email: email_addresses[0].email_address,
-    username: username!,
-    firstName: first_name,
-    lastName: last_name,
-    photo: image_url,
-    role: 'user' as const,
-    aboutMe: 'Sample about me',
-    location: 'Sample location',
-    interestedIn: ['Sample interest'],
+  const userUpdates: UpdateUserParams = {
+    userId: id!,
+    updates: {
+      // email: email_addresses[0].email_address,
+      username: username!,
+      firstName: first_name,
+      lastName: last_name,
+      photo: image_url,
+      // role: 'user' as const,
+      aboutMe: 'Sample about me',
+      location: 'Sample location',
+      // interestedIn: ['Sample interest'],
+    },
   };
+  
 
-  const updatedUser = await updateUser(id, user)
+  const updatedUser = await updateUser(id!, userUpdates);
 
   return NextResponse.json({ message: 'OK', user: updatedUser });
 }
+
 
 if (eventType === 'user.deleted') {
   const { id } = evt.data;
